@@ -20,7 +20,7 @@
         canvas.width = window.innerWidth - 50;
         canvas.height = 600;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "black";
+        //ctx.fillStyle = "black";
         /*var GV = false;
         function poop() {
           console.log('ggfkjgh');
@@ -106,19 +106,13 @@
             gamePlayActive = false;
         });
 */
-        var keyUp = true;
-
-        function disableKey() {
-          console.log(keyUp);
-          keyUp = false;
-          console.log(keyUp);
-          setTimeout(function () {
-            keyUp = true;
-            console.log(keyUp);
-          }, 600)
+        var waitToTest;
+        function WaitForJump() {
+          setTimeout(function(){
+            waitToTest = false;
+          }, 200)
         }
 
-        var jumping;
         window.addEventListener('keydown', function (event) {
           console.log(event);
           if (event.key === "ArrowRight" || event.key === "d") {
@@ -128,10 +122,13 @@
             ball.dx = -5;
           }
           else if (event.key === "ArrowUp" && grounded) {
+            console.log("wassup");
             event.preventDefault();
             grounded = false;
-            jumping = true;
-            disableKey();
+            ball.jump();
+            waitToTest = true;
+            WaitForJump();
+
           }
           else if (event.key === "ArrowUp" && !grounded) {
             event.preventDefault();
@@ -161,27 +158,38 @@
           });
         var grounded;
         var base;
-        var platform = [];
+        var platform;
 
         function groundCheck() {
+          platform = false;
           base = getDistance(ball.x, (ball.y + (ball.height / 2)), ball.x, canvas.height);
-          /*for (var i =0; i < platformArray.length; i++){
-            if (platformArray[i].x <ball.x < (platformArray[i].x + platformArray[i].width &&
-            getDistance(ball.x, (ball.y + ball.height/2), ball.x, platformArray[i].y) <= 0.1)){
-              ball.dy = 0;
-              ball.y = platform[i].y;
+          for (var i = 0; i < platformArray.length; i++) {
+            if (platformArray[i].x < ball.x && ball.x < (platformArray[i].x + platformArray[i].width) &&
+              (ball.y + ball.height / 2) - platformArray[i].y <= 3) {
+              // ball.dy = 0;
+              // ball.y = platform[i].y;
               grounded = true;
+              console.log("brumhilda");
+              platform = true;
+              ball.dy = 0;
+              ball.y = platformArray[i].y - platformArray[i].height * 2.1;
             }
-          }*/
-           if (base <= 0.7 && !jumping || (ball.y + (ball.height / 2)) > canvas.height) {
-            jumping = false;
-            grounded = true;
-            ball.y = canvas.height - (ball.height / 2);
           }
-          else {
-            grounded = false;
+          if (platform){
+            gravity = 0;
           }
-        }
+
+            else if (base <= 0.7 || (ball.y + (ball.height / 2)) > canvas.height && !waitToTest) {
+              grounded = true;
+              //the line below shouldn't be in this section
+              ball.y = canvas.height - (ball.height / 2);
+            }
+            else {
+              gravity = 1;
+              grounded = false;
+              platform = false;
+            }
+          }
 
 
         /*var platform = false;
@@ -246,14 +254,23 @@
           this.dx = dx;
           this.height = height;
           this.width = width;
+
+          this.jump = function () {
+            //console.log("well then What the fuck?", grounded);
+            this.dy = -20;
+            this.y += this.dy;
+          };
           this.update = function () {
             if (grounded) {
             //(this.y + (this.height / 2) + this.dy >= canvas.height || platform) {
-              this.dy = -this.dy * mu;
-            } else if (jumping) {
+              this.dy = 0;
+            } else if (platform) {
+              this.dy = 0;
+            }
+            /*} else if () {
               ball.dy -= 20;
               jumping = false;
-            } else {
+            }*/ else if (!grounded) {
               this.dy += gravity;
             }
             this.y += this.dy;
@@ -277,10 +294,10 @@
           this.draw = function () {
 
 
-            if (this.dx === 0 && Math.abs(this.dy) <= 2) {
+            if (this.dx === 0 && grounded){//Math.abs(this.dy) <= 2) {
               ctx.drawImage(playerStand, (this.x - 42), (this.y + 18) - 60);
             }
-            else if (Math.abs(this.dy) > 0.5) {
+            else if (!grounded) {//(Math.abs(this.dy) > 0.5) {
               if (this.dx >= 0) {
                 ctx.drawImage(playerJump, (this.x - 42), (this.y + 18) - 60);
               } else {
@@ -322,10 +339,11 @@
           };
         }
 
-        function Platform(x, y, width, text, color) {
+        function Platform(x, y, width, height, text, color) {
           this.x = x;
           this.y = y;
           this.width = width;
+          this.height = height;
           this.text = text;
           this.color = color;
 
@@ -421,8 +439,8 @@
           ball = new Player(canvas.width / 2, canvas.height - 42, 0, 0, 84, 64);
           powerUpArray.push(new PowerUp(100, 500, 0, 1));
           powerUpArray.push(new PowerUp(200, 500, 1, 1));
-          platformArray.push(new Platform(100, 300, 585, "HTML canvas games using javascript", colorArray[1]));
-          platformArray.push(new Platform(520, 500, 330, "C# Games with Unity", colorArray[1]));
+          platformArray.push(new Platform(100, 480, 585, 30, "HTML canvas games using javascript", colorArray[1]));
+          platformArray.push(new Platform(520, 550, 330, 30, "C# Games with Unity", colorArray[1]));
           make_base();
           make_baseOne();
           make_baseTwo();
@@ -458,7 +476,7 @@
           //}
           //console.log(getDistance(ball.x, ball.y, powerUp.x, powerUp.y))
           //console.log(jumping, grounded, base)
-          console.log(jumping);
+          console.log(grounded, platform);
         }
 
         init();
