@@ -165,7 +165,9 @@
           base = getDistance(ball.x, (ball.y + (ball.height / 2)), ball.x, canvas.height);
           for (var i = 0; i < platformArray.length; i++) {
             if (platformArray[i].x < ball.x && ball.x < (platformArray[i].x + platformArray[i].width) &&
-              (ball.y + ball.height / 2) - platformArray[i].y <= 3) {
+              (ball.y + ball.height / 2) - platformArray[i].y <= 3 &&
+              getDistance(ball.x, (ball.y + ball.height/2), ball.x, platformArray[i].y) <
+              platformArray[i].height * 2.2) {
               // ball.dy = 0;
               // ball.y = platform[i].y;
               grounded = true;
