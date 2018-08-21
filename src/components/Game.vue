@@ -125,6 +125,7 @@
             console.log("wassup");
             event.preventDefault();
             grounded = false;
+            platform = false;
             ball.jump();
             waitToTest = true;
             WaitForJump();
@@ -167,7 +168,7 @@
             if (platformArray[i].x < ball.x && ball.x < (platformArray[i].x + platformArray[i].width) &&
               (ball.y + ball.height / 2) - platformArray[i].y <= 3 &&
               getDistance(ball.x, (ball.y + ball.height/2), ball.x, platformArray[i].y) <
-              platformArray[i].height * 2.2) {
+              platformArray[i].height * 2.2 && !waitToTest) {
               // ball.dy = 0;
               // ball.y = platform[i].y;
               grounded = true;
@@ -478,7 +479,7 @@
           //}
           //console.log(getDistance(ball.x, ball.y, powerUp.x, powerUp.y))
           //console.log(jumping, grounded, base)
-          console.log(grounded, platform);
+          //console.log(grounded, platform);
         }
 
         init();

@@ -1,5 +1,5 @@
 <template>
-  <div class="project">
+  <div id="projectsSection" class="project">
     <table>
       <th class="tableColumn" v-show="!alternator">
         <img :src="image" class="projectImage">

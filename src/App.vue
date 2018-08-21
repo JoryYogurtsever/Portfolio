@@ -6,9 +6,9 @@
     <div class="parallax">
       <center class="Ozge">
         <p class="Jory"> Jory Hagen - Front-End Developer </p>
-        <button class="ParallaxButton">Projects</button>
-        <button class="ParallaxButton">About Me</button>
-        <button class="ParallaxButton">Contact</button>
+        <button onClick="document.getElementById('projectsSection').scrollIntoView();" class="ParallaxButton">Projects</button>
+        <button onClick="document.getElementById('aboutMeSection').scrollIntoView();" class="ParallaxButton">About Me</button>
+        <button onClick="document.getElementById('contactSection').scrollIntoView();" class="ParallaxButton">Contact</button>
       </center>
     </div>
     <app-project class="project" image="../static/PixoPixaRetro.png" title="PixoPixa.com"
@@ -24,15 +24,17 @@
     </app-project>
     <app-game class="game" title="Unity C# Games" text="I have also been working quite a bit with C# to
 make some games in unity as part of my PixoPixa Business"></app-game>
-    <!--app-contact>
-    </app-contact-->
+    <about-us></about-us>
+    <Contact>
+    </Contact>
   </div>
 </template>
 
 <script>
   import Project from "./components/Project.vue";
   import Game from "./components/Game.vue";
-  import ContactFeature from "./components/ContactFeature.vue";
+  import Contact from "./components/Contact.vue";
+  import AboutUs from "./components/AboutUs"
 
   export default {
     name: 'app',
@@ -46,7 +48,8 @@ make some games in unity as part of my PixoPixa Business"></app-game>
     components: {
       appProject: Project,
       appGame: Game,
-      appContact: ContactFeature
+      Contact: Contact,
+      aboutUs: AboutUs
     }
   }
 </script>
