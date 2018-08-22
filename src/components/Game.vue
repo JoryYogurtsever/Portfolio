@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="watermelon">
     <canvas id="canvasTwo">
     </canvas>
-    <button id="cv" class="test">I am Now visible!</button>
+    <div id="cv" class="test">
+      <a href="joryHagenCV.pdf>"><button class="testTwo">My Gorgeous CV!</button></a>
+    </div>
   </div>
 </template>
 
@@ -17,7 +19,7 @@
       updateCanvas: function () {
         var canvas = document.getElementById('canvasTwo'),
           ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth - 50;
+        canvas.width = window.innerWidth - 60;
         canvas.height = 600;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         //ctx.fillStyle = "black";
@@ -329,14 +331,16 @@
           };
         }
 
-        function PowerUp(x, y, image, visi) {
+        function PowerUp(x, y, image, width, height, visi) {
           this.x = x;
           this.y = y;
+          this.width = width;
+          this.height = height;
           this.image = image;
           this.visi = visi;
 
           this.draw = function () {
-            ctx.drawImage(powerUpImageArray[this.image], this.x, this.y, 40, 40);
+            ctx.drawImage(powerUpImageArray[this.image], this.x, this.y, this.width, this.height);
             //console.log(visi);
           };
         }
@@ -354,7 +358,7 @@
             ctx.fillStyle = "forestgreen";
             ctx.fillText(this.text, this.x, this.y);
 
-            ctx.beginPath();
+           /* ctx.beginPath();
             ctx.arc(this.x, this.y, 5, 0, Math.PI * 2, false);
             ctx.fillStyle = this.color;
             ctx.fill();
@@ -364,7 +368,7 @@
             ctx.arc(this.x + this.width, this.y, 5, 0, Math.PI * 2, false);
             ctx.fillStyle = this.color;
             ctx.fill();
-            ctx.closePath();
+            ctx.closePath();*/
           };
         }
 
@@ -426,6 +430,27 @@
           var javaScript = new Image();
           javaScript.src = '../../static/javascript.svg';
           powerUpImageArray.push(javaScript);
+          var git = new Image();
+          git.src = '../../static/git-seeklogo.com.svg';
+          powerUpImageArray.push(git);
+          var vue = new Image();
+          vue.src = '../../static/vuejs-seeklogo.com.svg';
+          powerUpImageArray.push(vue);
+          var css = new Image();
+          css.src = '../../static/css-3-seeklogo.com.svg';
+          powerUpImageArray.push(css);
+          var jquery = new Image();
+          jquery.src = '../../static/jquery-seeklogo.com.svg';
+          powerUpImageArray.push(jquery);
+          var npm = new Image();
+          npm.src = '../../static/npm-node-package-manager.svg';
+          powerUpImageArray.push(npm);
+          var webpack = new Image();
+          webpack.src = '../../static/webpack-seeklogo.com.svg';
+          powerUpImageArray.push(webpack);
+          var unity = new Image();
+          unity.src = '../../static/unity-seeklogo.com.svg';
+          powerUpImageArray.push(unity);
         }
 
 
@@ -440,17 +465,22 @@
           platformArray = [];
           skills = 0;
           ball = new Player(canvas.width / 2, canvas.height - 42, 0, 0, 84, 64);
-          powerUpArray.push(new PowerUp(100, 500, 0, 1));
-          powerUpArray.push(new PowerUp(200, 500, 1, 1));
+          powerUpArray.push(new PowerUp(600, 250, 0, 40, 40, 1));
+          powerUpArray.push(new PowerUp(400, 355, 1, 55, 55, 1));
+          powerUpArray.push(new PowerUp(1100, 410, 2, 40, 40, 1));
+          powerUpArray.push(new PowerUp(350, 460, 3, 40, 40, 1));
+          powerUpArray.push(new PowerUp(100, 30, 4, 30, 40, 1));
+          powerUpArray.push(new PowerUp(50, 370, 5, 70, 23, 1));
+          powerUpArray.push(new PowerUp(600, 45, 6, 60, 25, 1));
+          powerUpArray.push(new PowerUp(200, 190, 7, 40, 40, 1));
+          powerUpArray.push(new PowerUp(1000, 110, 8, 40, 40, 1));
           platformArray.push(new Platform(100, 100, 610, 30, "I've also built quite a few video games", colorArray[1]));
           platformArray.push(new Platform(650, 180, 450, 30, "I've build games using Unity", colorArray[1]));
           platformArray.push(new Platform(30, 260, 415, 30, "and coded them using C#", colorArray[1]));
           platformArray.push(new Platform(150, 320, 645, 30, "I've also build games using HTML canvas", colorArray[1]));
           platformArray.push(new Platform(10, 430, 525, 30, "and coded them with javascript", colorArray[1]));
-          platformArray.push(new Platform(600, 480, 605, 30, "Use AD and W or left right and space", colorArray[1]));
+          platformArray.push(new Platform(600, 480, 618, 30, "Use A, D and W or left, right and space", colorArray[1]));
           platformArray.push(new Platform(300, 535, 350, 30, "to give this one a try!", colorArray[1]));
-          //platformArray.push(new Platform(100, 480, 585, 30, "HTML canvas games using javascript", colorArray[1]));
-          //platformArray.push(new Platform(520, 550, 330, 30, "C# Games with Unity", colorArray[1]));
           make_base();
           make_baseOne();
           make_baseTwo();
@@ -507,5 +537,23 @@
 <style>
   .test {
     display: none;
+  }
+  .testTwo {
+    position: absolute;
+    font-size: 1.5em;
+    bottom: 300px;
+    left: 40%;
+    width: 250px;
+    height: 60px;
+    background-color: seagreen;
+    color: white;
+    border: 2px solid rgba(219, 219, 219, 0.5);
+  /*  margin-bottom: -2050px;*/
+  }
+  #canvasTwo {
+    border: 2px solid seagreen;
+  }
+  .watermelon {
+    position: relative;
   }
 </style>

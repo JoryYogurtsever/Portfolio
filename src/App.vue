@@ -132,7 +132,7 @@ make some games in unity as part of my PixoPixa Business"></app-game>
   }
   .game {
     margin: 20px;
-    border: 2px solid seagreen;
+/*    border: 2px solid seagreen;*/
     width: 96.6%;
   }
 </style>
