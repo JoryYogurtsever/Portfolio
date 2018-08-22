@@ -1,7 +1,15 @@
 <template>
-  <div class="contactArea">
-    <!--img class="contactImage" src="../../static/PixelUs.png"-->
-    <form class="yogurtForm">
+  <div id="contactArea" @click.prevent="resetEntries($event)">
+    <div id="youMad" class="sneaky">
+     <img class="SadImage" src="../../static/AreYouMad.png">
+    </div>
+    <div id="noEmail" class="sneaky">
+      <img class="SadImage" src="../../static/emailYou.png">
+    </div>
+    <div id="noName" class="sneaky">
+      <img class="SadImage" src="../../static/yourname.png">
+    </div>
+      <form class="yogurtForm">
       <input type="text" id="name" @click="resetName()" class="formItem" v-model="userMessage.name">
       <input type="text" id="email" @click="resetEmail()" class="formItem" v-model="userMessage.email">
       <input type="text" id="phone" @click="resetPhone()" class="formItem" v-model="userMessage.phone"><br>
@@ -25,6 +33,25 @@
       }
     },
     methods: {
+      resetEntries(event) {
+        {
+          if (event.target.id === 'name' || event.target.id === 'email' || event.target.id === 'phone' || event.target.id === 'message') {
+          } else {
+            if (this.userMessage.name === '') {
+              this.userMessage.name = 'name';
+            }
+            if (this.userMessage.email === '') {
+              this.userMessage.email = 'email';
+            }
+            if (this.userMessage.phone === '') {
+              this.userMessage.phone = 'phone (optional)';
+            }
+            if (this.userMessage.message === '') {
+              this.userMessage.message = 'message';
+            }
+          }
+        }
+      },
       resetName() {
         if (this.userMessage.name === 'name') {
           this.userMessage.name = '';
@@ -82,23 +109,40 @@
         }
       },
       submitForm() {
-        this.$http.post('https://vuejs-http-96a4b.firebaseio.com/formTest.json', this.userMessage)
-          .then(() => {
-            this.userMessage.name = 'name';
-            this.userMessage.email = 'email';
-            this.userMessage.phone = 'phone (optional)';
-            this.userMessage.message = 'message';
+        if (this.userMessage.name === ' ' || this.userMessage.name === 'name') {
+          document.getElementById('noName').removeAttribute('class');
+          setTimeout(function() {
+            document.getElementById('noName').setAttribute('class', 'sneaky');
+          }, 2500);
+        } else if (this.userMessage.email === ' ' || this.userMessage.email === 'email') {
+          document.getElementById('noEmail').removeAttribute('class');
+          setTimeout(function() {
+            document.getElementById('noEmail').setAttribute('class', 'sneaky');
+          }, 3500);
+        } else if (this.userMessage.message === ' ' || this.userMessage.message === 'message') {
+          document.getElementById('youMad').removeAttribute('class');
+          setTimeout(function() {
+            document.getElementById('youMad').setAttribute('class', 'sneaky');
+          }, 5000);
+        } else {
+          this.$http.post('https://vuejs-http-96a4b.firebaseio.com/formTest.json', this.userMessage)
+            .then(() => {
+              this.userMessage.name = 'name';
+              this.userMessage.email = 'email';
+              this.userMessage.phone = 'phone (optional)';
+              this.userMessage.message = 'message';
 
-          }, error => {
-            console.log(error);
-          });
+            }, error => {
+              console.log(error);
+            });
+        }
       }
     }
   }
 </script>
 
 <style>
-  .contactArea {
+  #contactArea {
     background-image: url("../../static/PixelUs.png");
     height: 650px;
     /*background-attachment: fixed;*/
@@ -106,7 +150,7 @@
     background-repeat: no-repeat;
     background-size: cover;;
     width: 100%;
-    /*position: relative;*/
+    position: relative;
   }
   .formItem {
     font-family: 'Cinzel', serif;
@@ -146,5 +190,15 @@
     height: 40px;
     margin-left: 600px;
     border: none;
+  }
+  .SadImage {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    z-index: 2;
+    width: 200px;
+  }
+  .sneaky {
+    display: none;
   }
 </style>
