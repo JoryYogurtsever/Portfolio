@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="pudding">
-      A Jory Hagen Highly Certified Production
+      A Jory Hagen Production
     </div>
     <div class="parallax">
       <center class="Ozge">
@@ -18,7 +18,7 @@
     </app-project>
     <app-project class="project" image="../static/WanderlustRetro.png" title="WanderlustVisaCenter.com (orwhatever)"
                  text="This site is the first project I started using javascript, I haven't had time
-                to generate the content for it yet and am only bought a domain to showcase the coding."
+                to generate the content for it yet and have only bought a domain to showcase the coding."
     :left="truthy"
     link="https://DONTFORGETTOPUTNEWLINKHERE">
     </app-project>
@@ -27,6 +27,8 @@ make some games in unity as part of my PixoPixa Business"></app-game>
     <about-us></about-us>
     <Contact>
     </Contact>
+    <app-footer>
+    </app-footer>
   </div>
 </template>
 
@@ -35,6 +37,7 @@ make some games in unity as part of my PixoPixa Business"></app-game>
   import Game from "./components/Game.vue";
   import Contact from "./components/Contact.vue";
   import AboutUs from "./components/AboutUs"
+  import AppFooter from "./components/Footer"
 
   export default {
     name: 'app',
@@ -49,7 +52,8 @@ make some games in unity as part of my PixoPixa Business"></app-game>
       appProject: Project,
       appGame: Game,
       Contact: Contact,
-      aboutUs: AboutUs
+      aboutUs: AboutUs,
+      appFooter: AppFooter
     }
   }
 </script>

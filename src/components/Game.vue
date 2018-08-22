@@ -114,14 +114,14 @@
         }
 
         window.addEventListener('keydown', function (event) {
-          console.log(event);
+          //console.log(event);
           if (event.key === "ArrowRight" || event.key === "d") {
             ball.dx = 5;
           }
           else if (event.key === "ArrowLeft" || event.key === "a") {
             ball.dx = -5;
           }
-          else if (event.key === "ArrowUp" && grounded) {
+          else if ((event.key === " " && grounded) || (event.key === "w" && grounded)) {
             console.log("wassup");
             event.preventDefault();
             grounded = false;
@@ -129,15 +129,14 @@
             ball.jump();
             waitToTest = true;
             WaitForJump();
-
           }
-          else if (event.key === "ArrowUp" && !grounded) {
+          else if (event.key === " " && !grounded) {
             event.preventDefault();
           }
-          else if (event.key === "w" && keyUp) {
+          else if (event.key === "w" && !grounded) {
             event.preventDefault();
-            ball.dy += 100;
-            disableKey();
+            //ball.dy += 100;
+            //disableKey();
           }
         });
         window.addEventListener('keyup', function (event) {
@@ -260,7 +259,7 @@
 
           this.jump = function () {
             //console.log("well then What the fuck?", grounded);
-            this.dy = -20;
+            this.dy = -15;
             this.y += this.dy;
           };
           this.update = function () {
@@ -439,11 +438,19 @@
         function init() {
           powerUpArray = [];
           platformArray = [];
+          skills = 0;
           ball = new Player(canvas.width / 2, canvas.height - 42, 0, 0, 84, 64);
           powerUpArray.push(new PowerUp(100, 500, 0, 1));
           powerUpArray.push(new PowerUp(200, 500, 1, 1));
-          platformArray.push(new Platform(100, 480, 585, 30, "HTML canvas games using javascript", colorArray[1]));
-          platformArray.push(new Platform(520, 550, 330, 30, "C# Games with Unity", colorArray[1]));
+          platformArray.push(new Platform(100, 100, 610, 30, "I've also built quite a few video games", colorArray[1]));
+          platformArray.push(new Platform(650, 180, 450, 30, "I've build games using Unity", colorArray[1]));
+          platformArray.push(new Platform(30, 260, 415, 30, "and coded them using C#", colorArray[1]));
+          platformArray.push(new Platform(150, 320, 645, 30, "I've also build games using HTML canvas", colorArray[1]));
+          platformArray.push(new Platform(10, 430, 525, 30, "and coded them with javascript", colorArray[1]));
+          platformArray.push(new Platform(600, 480, 605, 30, "Use AD and W or left right and space", colorArray[1]));
+          platformArray.push(new Platform(300, 535, 350, 30, "to give this one a try!", colorArray[1]));
+          //platformArray.push(new Platform(100, 480, 585, 30, "HTML canvas games using javascript", colorArray[1]));
+          //platformArray.push(new Platform(520, 550, 330, 30, "C# Games with Unity", colorArray[1]));
           make_base();
           make_baseOne();
           make_baseTwo();
