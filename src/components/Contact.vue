@@ -201,4 +201,9 @@
   .sneaky {
     display: none;
   }
+  @media (max-width:640px) {
+    .formButton {
+      margin-left: 6px;
+    }
+  }
 </style>

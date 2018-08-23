@@ -137,10 +137,33 @@ make some games in unity as part of my PixoPixa Business"></app-game>
     }
   }
   @media screen and (max-width:640px) {
-      .project {
-       /* border: 20px solid pink;*/
-        font-size: 0.7em;
-      }
+    .Jory {
+      font-size: 2em;
     }
 
+    .ParallaxButton {
+      color: black;
+      font-size: 1.2em;
+      margin: 45px;
+      height: 45px;
+      width: 170px;
+    }
+    .pudding {
+      padding-top: 10px;
+      height: 100px;
+      font-family: 'Flamenco', cursive;
+      font-size: 3em;
+      text-align: center;
+    }
+    .parallax {
+      width: window.innerwidth;
+      height: inherit;
+    }
+    .project {
+      margin: 5px;
+      border: 2px solid seagreen;
+      width: 96.6%;
+      font-size: 0.4em;
+    }
+  }
 </style>

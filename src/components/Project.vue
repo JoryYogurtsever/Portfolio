@@ -84,11 +84,21 @@
   @media (max-width:640px) {
 
     .projectEntry {
-      font-size: 20px;
+      font-size: 10px;
     }
     .projectImage {
-      width: 20px;
+      width: 80px;
+      height: 80px;
+    }
+    .small-logos {
+      margin-top: 0;
+      height: 25px;
+      width: 25px;
+    }
+    .small-logo {
+      padding-bottom: 3px;
       height: 20px;
+      width: 20px;
     }
   }
 </style>

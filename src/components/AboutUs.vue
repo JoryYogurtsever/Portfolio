@@ -54,4 +54,17 @@
     height: 2px;
     background-color: seagreen;
   }
+  @media (max-width:640px) {
+    .lovelyText {
+      font-size: 10px;
+    }
+    .lovelyTitle {
+      font-size: 1.2em;
+      margin: 5px;
+    }
+    #contactSection {
+      font-size: 1.2em;
+      margin: 5px;
+    }
+  }
 </style>
