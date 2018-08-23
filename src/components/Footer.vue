@@ -28,4 +28,18 @@
     color: black;
     padding-bottom: 10px;
   }
+  @media (max-width:640px) {
+    .bottomFooter {
+      padding-left: 30%;
+      font-size: 0.6em;
+    }
+    .github {
+      padding-left: 20px;
+      width: 15px;
+    }
+    .mailer {
+      padding-left: 20px;
+      font-size: 18px;
+    }
+  }
 </style>

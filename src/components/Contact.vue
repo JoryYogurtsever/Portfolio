@@ -202,8 +202,42 @@
     display: none;
   }
   @media (max-width:640px) {
+    #contactArea {
+      background-image: url("../../static/PixelUs.png");
+      height: 370px;
+    }
+    .formItem {
+      font-size: 0.6em;
+      margin-left: 5%;
+      padding-left: 5%;
+      z-index: 2;
+      width: 130px;
+      height:40px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    .textArea {
+      font-size: 0.6em;
+      width: 75%;
+      height: 90px;
+      margin-top: 108px;
+      margin-left: 20px;
+      padding-left: 50px;
+      padding-top: 20px;
+    }
     .formButton {
-      margin-left: 6px;
+      font-size: 0.6em;
+      width: 60px;
+      height: 20px;
+      margin-left: 20px;
+      border: none;
+    }
+    .SadImage {
+      position: absolute;
+      left: 50%;
+      top: 20%;
+      z-index: 2;
+      width: 120px;
     }
   }
 </style>
