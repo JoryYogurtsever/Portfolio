@@ -130,9 +130,17 @@ make some games in unity as part of my PixoPixa Business"></app-game>
     border: 2px solid seagreen;
     width: 96.6%;
   }
-  .game {
-    margin: 20px;
-/*    border: 2px solid seagreen;*/
-    width: 96.6%;
+
+  @media (max-width:960px) {
+    .Jory {
+      font-size: 2.2em;
+    }
   }
+  @media screen and (max-width:640px) {
+      .project {
+       /* border: 20px solid pink;*/
+        font-size: 0.7em;
+      }
+    }
+
 </style>

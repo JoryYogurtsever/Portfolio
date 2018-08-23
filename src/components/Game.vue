@@ -19,7 +19,7 @@
       updateCanvas: function () {
         var canvas = document.getElementById('canvasTwo'),
           ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth - 60;
+        canvas.width = window.innerWidth;
         canvas.height = 600;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         //ctx.fillStyle = "black";
@@ -261,7 +261,7 @@
 
           this.jump = function () {
             //console.log("well then What the fuck?", grounded);
-            this.dy = -15;
+            this.dy = -18;
             this.y += this.dy;
           };
           this.update = function () {
@@ -358,7 +358,7 @@
             ctx.fillStyle = "forestgreen";
             ctx.fillText(this.text, this.x, this.y);
 
-           /* ctx.beginPath();
+         /*   ctx.beginPath();
             ctx.arc(this.x, this.y, 5, 0, Math.PI * 2, false);
             ctx.fillStyle = this.color;
             ctx.fill();
@@ -466,21 +466,22 @@
           skills = 0;
           ball = new Player(canvas.width / 2, canvas.height - 42, 0, 0, 84, 64);
           powerUpArray.push(new PowerUp(600, 250, 0, 40, 40, 1));
-          powerUpArray.push(new PowerUp(400, 355, 1, 55, 55, 1));
-          powerUpArray.push(new PowerUp(1100, 410, 2, 40, 40, 1));
-          powerUpArray.push(new PowerUp(350, 460, 3, 40, 40, 1));
+          powerUpArray.push(new PowerUp(320, 355, 1, 55, 55, 1));
+          powerUpArray.push(new PowerUp(canvas.width - 140, 390, 2, 40, 40, 1));
+          powerUpArray.push(new PowerUp((canvas.width / 3) + 55, 460, 3, 40, 40, 1));
           powerUpArray.push(new PowerUp(100, 30, 4, 30, 40, 1));
           powerUpArray.push(new PowerUp(50, 370, 5, 70, 23, 1));
-          powerUpArray.push(new PowerUp(600, 45, 6, 60, 25, 1));
+          powerUpArray.push(new PowerUp(390, 45, 6, 60, 25, 1));
           powerUpArray.push(new PowerUp(200, 190, 7, 40, 40, 1));
-          powerUpArray.push(new PowerUp(1000, 110, 8, 40, 40, 1));
-          platformArray.push(new Platform(100, 100, 610, 30, "I've also built quite a few video games", colorArray[1]));
-          platformArray.push(new Platform(650, 180, 450, 30, "I've build games using Unity", colorArray[1]));
-          platformArray.push(new Platform(30, 260, 415, 30, "and coded them using C#", colorArray[1]));
-          platformArray.push(new Platform(150, 320, 645, 30, "I've also build games using HTML canvas", colorArray[1]));
-          platformArray.push(new Platform(10, 430, 525, 30, "and coded them with javascript", colorArray[1]));
-          platformArray.push(new Platform(600, 480, 618, 30, "Use A, D and W or left, right and space", colorArray[1]));
-          platformArray.push(new Platform(300, 535, 350, 30, "to give this one a try!", colorArray[1]));
+          powerUpArray.push(new PowerUp((canvas.width *2/3) + 100, 110, 8, 40, 40, 1));
+          platformArray.push(new Platform(100, 100, 350, 30, "I've build video games", colorArray[1]));
+          platformArray.push(new Platform(canvas.width * 2/3, 180, 192, 30, "using Unity", colorArray[1]));
+          platformArray.push(new Platform(30, 260, 192, 30, "coded in C#", colorArray[1]));
+          platformArray.push(new Platform(canvas.width/4, 320, 438, 30, "I've also  used HTML canvas", colorArray[1]));
+          platformArray.push(new Platform(10, 430, 389, 30, "and coded in javascript", colorArray[1]));
+          platformArray.push(new Platform(canvas.width - 280, 460, 280, 30, "Use A, D and W or", colorArray[1]));
+          platformArray.push(new Platform(canvas.width - 280, 510, 230, 30, "\u21E6, \u21E8 and space", colorArray[1]));
+          platformArray.push(new Platform(canvas.width / 3, 535, 350, 30, "to give this one a try!", colorArray[1]));
           make_base();
           make_baseOne();
           make_baseTwo();
@@ -551,7 +552,8 @@
   /*  margin-bottom: -2050px;*/
   }
   #canvasTwo {
-    border: 2px solid seagreen;
+    border-top: 2px solid seagreen;
+    border-bottom: 2px solid seagreen;
   }
   .watermelon {
     position: relative;

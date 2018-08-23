@@ -71,4 +71,24 @@
   .projectEntry {
     color: olive;
   }
+  @media (max-width:960px) {
+
+    .projectEntry {
+      font-size: 15px;
+    }
+    .projectImage {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  @media (max-width:640px) {
+
+    .projectEntry {
+      font-size: 20px;
+    }
+    .projectImage {
+      width: 20px;
+      height: 20px;
+    }
+  }
 </style>
