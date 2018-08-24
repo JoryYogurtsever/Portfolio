@@ -1,11 +1,11 @@
 <template>
-  <div class="watermelon">
+  <div class="canvasHolder">
     <canvas id="canvasOne" class="almostTooSneaky">
     </canvas>
     <canvas id="canvasTwo" class="sneaky">
     </canvas>
-    <div id="cv" class="test">
-      <a href="joryHagenCV.pdf>"><button class="testTwo">My Gorgeous CV!</button></a>
+    <div id="cv" class="resumeHolder">
+      <a href="joryHagenCV.pdf>"><button class="resumeButton">My Gorgeous CV!</button></a>
     </div>
   </div>
 </template>
@@ -21,49 +21,9 @@
       updateCanvas: function () {
         var canvas = document.getElementById('canvasOne'),
           ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
+        canvas.width = window.innerWidth - 15;
         canvas.height = 600;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        //ctx.fillStyle = "black";
-        /*var GV = false;
-        function poop() {
-          console.log('ggfkjgh');
-          //this.updateGameVictory();
-        };*/
-        //rectangle
-        //ctx.fillStyle = "rgba(255, 0, 0, 0.1)";
-        /*       ctx.fillRect(100, 100, 100, 100);
-        ctx.font="20px Georgia";
-
-        // Text
-        //ctx.fillStyle = "rgba(0, 255, 0, 0.1)";
-        ctx.fillText(this.exampleContent,10,50);
-
-        //line
-        ctx.beginPath();
-        ctx.moveTo(50, 300);
-        ctx.lineTo(300, 100);
-        ctx.lineTo(400, 300);
-        ctx.strokeStyle = "#987242";
-        ctx.stroke();
-
-        //arc, circle
-       // ctx.fillStyle = "black";
-        for (var i = 0; i < 100; i++) {
-          var x = Math.random();
-          var y = Math.random();
-          console.log(r, g, b);
-
-          ctx.beginPath();
-          ctx.arc(x * 800,y * 600, 30, 0, Math.PI * 2, false);
-          ctx.strokeStyle = "blue";
-          ctx.stroke();
-          ctx.arc
-        }
-        ctx.beginPath();
-        ctx.arc(300, 300, 30, 0, Math.PI * 2, false);
-        ctx.strokeStyle = "blue";
-        ctx.stroke();*/
         var colorArray = [
           "#7CFC00",
           "#7FFF00",
@@ -132,20 +92,33 @@
 
         canvas.addEventListener('touchend', function(e) {
           var deltaX, deltaY;
-          ball.dx = 0;
+          //ball.dx = 0;
           // Compute the change in X and Y coordinates.
           // The first touch point in the changedTouches
           // list is the touch point that was just removed from the surface.
           deltaX = e.changedTouches[0].clientX - clientX;
           deltaY = e.changedTouches[0].clientY - clientY;
-          if (deltaY < 10) {
+          console.log(deltaY);
+          if (deltaY < -10) {
             grounded = false;
             platform = false;
             ball.jump();
             waitToTest = true;
             WaitForJump();
           }
-          // Process the data ...
+          if (deltaX > 0) {
+            ball.dx = 5;
+            setTimeout(function () {
+              ball.dx = 0
+            }, 300);
+          }
+          if (deltaX < 0) {
+            ball.dx = -5;
+            setTimeout(function () {
+              ball.dx = 0
+            }, 300);
+            // Process the data ...
+          }
         }, false);
 
         window.addEventListener('keydown', function (event) {
@@ -512,8 +485,8 @@
           platformArray.push(new Platform(30, 260, 192, 30, "coded in C#", colorArray[1]));
           platformArray.push(new Platform(canvas.width/4, 320, 438, 30, "I've also  used HTML canvas", colorArray[1]));
           platformArray.push(new Platform(10, 430, 389, 30, "and coded in javascript", colorArray[1]));
-          platformArray.push(new Platform(canvas.width - 280, 460, 280, 30, "Use A, D and W or", colorArray[1]));
-          platformArray.push(new Platform(canvas.width - 280, 510, 230, 30, "\u21E6, \u21E8 and space", colorArray[1]));
+          platformArray.push(new Platform(canvas.width - 300, 460, 280, 30, "Use A, D and W or", colorArray[1]));
+          platformArray.push(new Platform(canvas.width - 300, 510, 230, 30, "\u21E6, \u21E8 and space", colorArray[1]));
           platformArray.push(new Platform(canvas.width / 3, 535, 350, 30, "to give this one a try!", colorArray[1]));
           make_base();
           make_baseOne();
@@ -662,9 +635,9 @@
         clientY = e.touches[0].clientY;
         console.log(clientX, clientY);
         if (clientX > ball.x) {
-          ball.dx = 5;
+          ball.dx = 3;
         } else if (clientX < ball.x) {
-          ball.dx = -5;
+          ball.dx = -3;
         }
       }, false);
 
@@ -685,13 +658,13 @@
           WaitForJump();
         }
         if (deltaX > 0) {
-          ball.dx = 5;
+          ball.dx = 3;
           setTimeout(function () {
             ball.dx = 0
           }, 300);
         }
         if (deltaX < 0) {
-          ball.dx = -5;
+          ball.dx = -3;
           setTimeout(function () {
             ball.dx = 0
           }, 300);
@@ -702,10 +675,10 @@
       window.addEventListener('keydown', function (event) {
         //console.log(event);
         if (event.key === "ArrowRight" || event.key === "d") {
-          ball.dx = 5;
+          ball.dx = 3;
         }
         else if (event.key === "ArrowLeft" || event.key === "a") {
-          ball.dx = -5;
+          ball.dx = -3;
         }
         else if ((event.key === " " && grounded) || (event.key === "w" && grounded)) {
           console.log("wassup");
@@ -1132,7 +1105,7 @@
 </script>
 
 <style>
-  .test {
+  .resumeHolder {
     display: none;
   }
   .testTwo {
@@ -1155,7 +1128,7 @@
     border-top: 2px solid seagreen;
     border-bottom: 2px solid seagreen;
   }
-  .watermelon {
+  .canvasHolder {
     position: relative;
   }
   .sneaky {
@@ -1168,7 +1141,7 @@
     .almostTooSneaky {
       display: none;
     }
-    .testTwo {
+    .resumeButton {
       font-size: 1em;
       bottom: 250px;
       left: 35%;

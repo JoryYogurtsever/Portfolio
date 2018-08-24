@@ -62,6 +62,7 @@ make some games in unity as part of my PixoPixa Business"></app-game>
   body {
     font-family: 'Cinzel', serif;
     margin: 0;
+    width: 100%
   }
   #app {
     padding-top: 0;
