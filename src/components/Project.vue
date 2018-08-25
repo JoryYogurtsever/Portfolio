@@ -21,25 +21,25 @@
 </template>
 
 <script>
-  export default {
-    data: function () {
-      return {
-        alternator: this.left
+export default {
+  data() {
+    return {
+      alternator: this.left,
+    };
+  },
+  props: [
+    'image',
+    'title',
+    'text',
+    'left',
+    'link',
+  ],
+  mounted: () => {
+    if (this.left <= '1') {
+      this.alternator = true;
     }
-    },
-    props: [
-      'image',
-      'title',
-      'text',
-      'left',
-      'link'
-    ],
-    mounted: () => {
-    if (this.left <= "1") {
-      this.alternator = true
-    }
-  }
-  }
+  },
+};
 </script>
 
 <style>

@@ -7,25 +7,31 @@
     <div class="parallax">
       <center class="middleMaker">
         <p class="Jory"> Jory Hagen - Front-End Developer </p>
-        <button onClick="document.getElementById('projectsSection').scrollIntoView();" class="ParallaxButton">Projects</button>
-        <button onClick="document.getElementById('aboutMeSection').scrollIntoView();" class="ParallaxButton">About Me</button>
-        <button onClick="document.getElementById('contactSection').scrollIntoView();" class="ParallaxButton">Contact</button>
+        <button onClick="document.getElementById('projectsSection').scrollIntoView();"
+                class="ParallaxButton">Projects</button>
+        <button onClick="document.getElementById('aboutMeSection').scrollIntoView();"
+                class="ParallaxButton">About Me</button>
+        <button onClick="document.getElementById('contactSection').scrollIntoView();"
+                class="ParallaxButton">Contact</button>
       </center>
     </div>
     <!-- My Previous work section -->
     <app-project class="project" image="../static/PixoPixaRetro.png" title="PixoPixa.com"
-                 text=" My first live website, dedicated to my newly founded buisness making custom video games as novelty gifts."
+                 text=" My first live website, dedicated to my newly
+                 founded buisness making custom video games as novelty gifts."
     :left="falsy"
     link="https://pixopixa.com">
     </app-project>
     <app-project class="project" image="../static/WanderlustRetro.png" title="WanderlustVisa.xyz"
-                 text="This site is the first project I started using javascript, I haven't had time
-                to generate the content for it yet and have only bought a domain to showcase the coding."
+                 text="This site is the first project I started using javascript,
+                 I haven't had time to generate the content for it yet and
+                 have only bought a domain to showcase the coding."
     :left="truthy"
     link="https://wanderlustvisa.xyz">
     </app-project>
     <!-- My totally unbelievable javascript game! -->
-    <app-game class="game" title="Unity C# Games" text="I have also been working quite a bit with C# to
+    <app-game class="game" title="Unity C# Games" text="I have also
+    been working quite a bit with C# to
 make some games in unity as part of my PixoPixa Business"></app-game>
     <!-- Our fascinating story :P -->
     <about-us></about-us>
@@ -39,29 +45,28 @@ make some games in unity as part of my PixoPixa Business"></app-game>
 </template>
 
 <script>
-  import Project from "./components/Project.vue";
-  import Game from "./components/Game.vue";
-  import Contact from "./components/Contact.vue";
-  import AboutUs from "./components/AboutUs"
-  import AppFooter from "./components/Footer"
+import Project from './components/Project.vue';
+import Game from './components/Game.vue';
+import Contact from './components/Contact.vue';
+import AboutUs from './components/AboutUs.vue';
+import AppFooter from './components/Footer.vue';
 
-  export default {
-    name: 'app',
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App',
-        truthy: true,
-        falsy: false
-      }
-    },
-    components: {
-      appProject: Project,
-      appGame: Game,
-      Contact: Contact,
-      aboutUs: AboutUs,
-      appFooter: AppFooter
-    }
-  }
+export default {
+  name: 'app',
+  data() {
+    return {
+      truthy: true,
+      falsy: false,
+    };
+  },
+  components: {
+    appProject: Project,
+    appGame: Game,
+    Contact,
+    aboutUs: AboutUs,
+    appFooter: AppFooter,
+  },
+};
 </script>
 
 <style>

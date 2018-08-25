@@ -1,6 +1,6 @@
 <template>
   <div class="bottomFooter">
-    &copy Jory Hagen
+    &copy; Jory Hagen
 
     <a href="https://github.com/JoryYogurtsever">
       <img src="../../static/github-square-brands.svg" class="github" />
