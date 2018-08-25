@@ -33,6 +33,8 @@
       }
     },
     methods: {
+      //these five functions test if a field has been left empty or clicked on and add or remove placholder text accordingly
+      //mostly I just didn't like the default behaviour very much
       resetEntries(event) {
         {
           if (event.target.id === 'name' || event.target.id === 'email' || event.target.id === 'phone' || event.target.id === 'message') {
@@ -108,6 +110,9 @@
           this.userMessage.name = 'name';
         }
       },
+      //This checks for missing input, handles errors and if all is well posts to the server
+      //I chose not to include any code to test for a valid email. I was reading that it's best
+      //left to the back end and I didn't want to accidentally annoy anyone trying to message me
       submitForm() {
         if (this.userMessage.name === ' ' || this.userMessage.name === 'name') {
           document.getElementById('noName').removeAttribute('class');
@@ -125,7 +130,7 @@
             document.getElementById('youMad').setAttribute('class', 'sneaky');
           }, 5000);
         } else {
-          this.$http.post('https://vuejs-http-96a4b.firebaseio.com/formTest.json', this.userMessage)
+          this.$http.post('https://joryhagen.com/comments', this.userMessage)
             .then(() => {
               this.userMessage.name = 'name';
               this.userMessage.email = 'email';
@@ -154,8 +159,6 @@
   }
   .formItem {
     font-family: 'Cinzel', serif;
-    /*float: left;*/
-    /*position: absolute;*/
     margin-left: 50px;
     padding-left: 50px;
     z-index: 2;
@@ -172,7 +175,6 @@
   }
   .textArea {
     font-family: 'Cinzel', serif;
-    /*float: left;*/
     width: 230px;
     height: 150px;
     margin-top: 93px;
@@ -183,7 +185,6 @@
   }
   .formButton {
     font-family: 'Cinzel', serif;
-    /*float: left;*/
     background-color: red;
     width: 80px;
     border-radius: 10px;

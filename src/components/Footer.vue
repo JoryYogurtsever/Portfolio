@@ -5,7 +5,7 @@
     <a href="https://github.com/JoryYogurtsever">
       <img src="../../static/github-square-brands.svg" class="github" />
     </a>
-    <a href="mailto:jrhagen@ualberta.ca"><i class="far fa-envelope mailer"></i></a>
+    <a href="mailto:jory@joryhagen.com"><i class="far fa-envelope mailer"></i></a>
   </div>
 </template>
 

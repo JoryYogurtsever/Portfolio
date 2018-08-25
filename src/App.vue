@@ -1,32 +1,38 @@
 <template>
   <div id="app">
-    <div class="pudding">
+    <!-- Upper Title, navigation and hero image -->
+    <div class="upperTitle">
       A Jory Hagen Production
     </div>
     <div class="parallax">
-      <center class="Ozge">
+      <center class="middleMaker">
         <p class="Jory"> Jory Hagen - Front-End Developer </p>
         <button onClick="document.getElementById('projectsSection').scrollIntoView();" class="ParallaxButton">Projects</button>
         <button onClick="document.getElementById('aboutMeSection').scrollIntoView();" class="ParallaxButton">About Me</button>
         <button onClick="document.getElementById('contactSection').scrollIntoView();" class="ParallaxButton">Contact</button>
       </center>
     </div>
+    <!-- My Previous work section -->
     <app-project class="project" image="../static/PixoPixaRetro.png" title="PixoPixa.com"
                  text=" My first live website, dedicated to my newly founded buisness making custom video games as novelty gifts."
     :left="falsy"
     link="https://pixopixa.com">
     </app-project>
-    <app-project class="project" image="../static/WanderlustRetro.png" title="WanderlustVisaCenter.com (orwhatever)"
+    <app-project class="project" image="../static/WanderlustRetro.png" title="WanderlustVisa.xyz"
                  text="This site is the first project I started using javascript, I haven't had time
                 to generate the content for it yet and have only bought a domain to showcase the coding."
     :left="truthy"
-    link="https://DONTFORGETTOPUTNEWLINKHERE">
+    link="https://wanderlustvisa.xyz">
     </app-project>
+    <!-- My totally unbelievable javascript game! -->
     <app-game class="game" title="Unity C# Games" text="I have also been working quite a bit with C# to
 make some games in unity as part of my PixoPixa Business"></app-game>
+    <!-- Our fascinating story :P -->
     <about-us></about-us>
+    <!-- we'd love to hear from you! -->
     <Contact>
     </Contact>
+    <!-- Why not check out my github! -->
     <app-footer>
     </app-footer>
   </div>
@@ -110,7 +116,7 @@ make some games in unity as part of my PixoPixa Business"></app-game>
     font-family: 'Cinzel', serif;
     font-weight: 500;
   }
-  .Ozge {
+  .middleMaker {
     padding-top: 10px;
   }
   .Jory {
@@ -119,7 +125,7 @@ make some games in unity as part of my PixoPixa Business"></app-game>
     font-family: 'Cinzel', serif;
     font-weight: 500;
   }
-  .pudding {
+  .upperTitle {
     padding-top: 10px;
     height: 100px;
     font-family: 'Flamenco', cursive;
@@ -149,7 +155,7 @@ make some games in unity as part of my PixoPixa Business"></app-game>
       height: 45px;
       width: 170px;
     }
-    .pudding {
+    .upperTitle {
       padding-top: 10px;
       height: 100px;
       font-family: 'Flamenco', cursive;
@@ -157,7 +163,6 @@ make some games in unity as part of my PixoPixa Business"></app-game>
       text-align: center;
     }
     .parallax {
-      width: window.innerwidth;
       height: inherit;
     }
     .project {
