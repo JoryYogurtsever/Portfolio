@@ -100,7 +100,7 @@ export default {
     color: #42b983;
   }
   .parallax {
-    background-image: url("./assets/IMGP5092.png");
+    background-image: url("../static/IMGP5092.png");
     height: 450px;
     background-attachment: fixed;
     background-position: center;

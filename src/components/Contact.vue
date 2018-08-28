@@ -18,7 +18,7 @@
              class="formItem" v-model="userMessage.phone"><br>
       <div><textarea class="textArea" @click="resetMessage()"
                      :id="userMessage.message" v-model="userMessage.message"></textarea></div>
-      <div><button class="formButton" @click="submitForm()">Submit!</button></div>
+      <div><button id="formButton" @click="submitForm()">Submit!</button></div>
 
     </form>
   </div>
@@ -133,7 +133,7 @@ export default {
           document.getElementById('youMad').setAttribute('class', 'sneaky');
         }, 5000);
       } else {
-        this.$http.post('https://joryhagen.com/comments', this.userMessage)
+        this.$http.post('https://vuejs-http-96a4b.firebaseio.com/comments.json', this.userMessage)
           .then(() => {
             this.userMessage.name = 'name';
             this.userMessage.email = 'email';
@@ -145,6 +145,29 @@ export default {
       }
     },
   },
+  mounted() {
+    document.addEventListener('keydown', (event) => {
+      console.log(event.target);
+      if (event.target.id === 'phone' && event.key === 'Tab') {
+        this.userMessage.message = '';
+      }
+      if (event.target.id === 'message' && event.key === 'Tab' && this.userMessage.message === '') {
+        this.userMessage.message = 'message'
+      }
+      if (event.key === 'Enter') {
+          this.submitForm();
+      }
+      if (event.key === 'Tab' && this.userMessage.name === '') {
+        this.userMessage.name = 'name';
+      }
+      if (event.key === 'Tab' && this.userMessage.email === '') {
+        this.userMessage.email = 'email';
+      }
+      if (event.key === 'Tab' && this.userMessage.phone === '') {
+        this.userMessage.phone = 'phone (optional)';
+      }
+    });
+  }
 };
 </script>
 
@@ -184,7 +207,7 @@ export default {
     padding-left: 50px;
     padding-top: 20px;
   }
-  .formButton {
+  #formButton {
     font-family: 'Cinzel', serif;
     background-color: red;
     width: 80px;
@@ -227,7 +250,7 @@ export default {
       padding-left: 50px;
       padding-top: 20px;
     }
-    .formButton {
+    #formButton {
       font-size: 0.6em;
       width: 60px;
       height: 20px;

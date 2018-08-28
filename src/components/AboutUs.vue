@@ -1,7 +1,7 @@
 <template>
   <div id="aboutMeSection">
     <h1 class="lovelyTitle">The man behind the pixels</h1>
-    <img src="../../static/JoryBOOM.png" class="lovelyImage">
+    <img src="../assets/JoryBOOM.png" class="lovelyImage">
     <p class="lovelyText">
       I used to joke that I'm Amish. I got my first cell
       phone when I was 20 years old in 2010 and that was
@@ -19,7 +19,7 @@
       from parts and was running Linux and toying with
       the command line. <br>
       </p>
-    <img src="../../static/metTheOzge.jpg" class="lovelyImage">
+    <img src="../assets/metTheOzge.jpg" class="lovelyImage">
     <p class="lovelyText">
       Three and a half years ago I met the Ozge she was probably
       eating yogurt at the time. We've spent the last
@@ -34,7 +34,7 @@
       video games as a gift for my girlfriend and that is something
       I ran with as well, coding in C# a bit as well. <br>
     </p>
-    <img src="../../static/AboveTheClouds.png" class="lovelyImage">
+    <img src="../assets/AboveTheClouds.png" class="lovelyImage">
     <p class="lovelyText">
       Learning to code has been a bit like climbing a mountain
       that gets taller right when you almost get to the top.
