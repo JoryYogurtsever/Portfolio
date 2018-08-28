@@ -17,7 +17,7 @@
       <input type="text" id="phone" @click="resetPhone()"
              class="formItem" v-model="userMessage.phone"><br>
       <div><textarea class="textArea" @click="resetMessage()"
-                     :id="userMessage.message" v-model="userMessage.message"></textarea></div>
+                     id="message" v-model="userMessage.message"></textarea></div>
       <div><button id="formButton" @click="submitForm()">Submit!</button></div>
 
     </form>
@@ -140,22 +140,21 @@ export default {
             this.userMessage.phone = 'phone (optional)';
             this.userMessage.message = 'message';
           }, (error) => {
-            console.log(error);
+            alert('Sorry, we were unable to receive your message, please email (below) or try again later.');
           });
       }
     },
   },
   mounted() {
     document.addEventListener('keydown', (event) => {
-      console.log(event.target);
       if (event.target.id === 'phone' && event.key === 'Tab') {
         this.userMessage.message = '';
       }
       if (event.target.id === 'message' && event.key === 'Tab' && this.userMessage.message === '') {
-        this.userMessage.message = 'message'
+        this.userMessage.message = 'message';
       }
       if (event.key === 'Enter') {
-          this.submitForm();
+        this.submitForm();
       }
       if (event.key === 'Tab' && this.userMessage.name === '') {
         this.userMessage.name = 'name';
@@ -167,7 +166,7 @@ export default {
         this.userMessage.phone = 'phone (optional)';
       }
     });
-  }
+  },
 };
 </script>
 
