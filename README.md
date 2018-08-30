@@ -2,6 +2,17 @@
 
 > My Personal Web Developer Profile
 
+# Technical Details
+
+> In this site I use HTML canvas to design a game that is interactive with the text and flow
+of the webpage. I also use some form control at the bottom and
+ do some simple POST requests and routing.
+
+# General Details
+
+> A display of my progress thus far as a Front-End Developer including some projects I've worked
+on, a bit about me and what I am capable of. 
+
 ## Build Setup
 
 ``` bash
